@@ -1,0 +1,219 @@
+body {
+    margin:0px;
+}
+body, button {
+    font-family: "Trebuchet MS";
+    font-size: 14px;
+    line-height: 19px;
+}
+a {
+    color: #0088cc;
+    font-family: "Trebuchet MS";
+    font-size: 14px;
+    line-height: 19px;
+}
+.tg {
+    padding:0px;
+    margin:0px;
+    overflow-x:hidden;
+}
+.tg-head {
+    height:44px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px 2px 0 0;
+    padding:5px;
+    overflow: hidden;
+}
+.tg-logo {
+    height: 40px;
+    width: 46px;
+    text-align: center;
+}
+.tg-logo-img {
+    width: 40px;
+    margin-top: 2px;
+}
+.tg-info {
+    margin-top: 3px;
+    margin-left: 8px;
+    color: #3d3d3d;
+    position: absolute;
+    left: 50px;
+    top: 7px;
+}
+.cursor-pointer {
+    cursor:pointer;
+}
+.tg-chat-title {
+    font-weight: bold;
+    overflow: hidden;
+    height: 19px;
+}
+.tg-count-members {
+    color: #6f6e6e;
+    font-size: 11px;
+    font-family: Verdana;
+}
+.tg-body {
+    background:#D2DBE4 url('../images/bg.jpg?v=1');
+    border-radius: 0;border-width: 0;
+    padding: 0px 10px 0px 10px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+    height:453px;
+}
+.post-avatar {
+    margin-left: 5px;
+    display: table-cell;
+    vertical-align:top;
+    margin-top: 10px
+}
+.post-avatar img {
+    width: 35px;
+    height:35px;
+}
+.tgw_item {
+    display: table;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.post-body {
+    max-width: 432px;
+    padding-left: 10px;
+    display: table-cell;
+    font-size: 13px;
+    color:#000;
+}
+.post-body-inner {
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 8px 12px 8px 12px;
+    color:#000;
+}
+.sticker-body-inner {
+    overflow: hidden;
+    border-radius: 7px;
+    padding: 8px 12px 8px 12px;
+    color:#000;
+}
+.post-author {
+    color: #ce6749;font-weight: 600;
+}
+.post-date {
+    margin-top: 0px;
+    color: #999;
+    text-align: right;
+    font-size: 12px;
+    font-style: italic;
+}
+.post-views {
+}
+.eye-picure {
+    width: 20px;
+    margin: 0px 1px -6px 1px;
+}
+.post-img-outer {
+    padding-top: 5px;padding-bottom: 5px;
+}
+.post-img-outer img {
+    max-width: 100%;
+}
+.day-block {
+    text-align: center;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+.day-block-inner {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 3px;
+    text-align: center;
+    width: 110px;
+    border-radius: 25px;color: #FFF;
+    margin-left: auto;margin-right: auto;
+    padding-left:15px;
+    padding-right: 15px;
+}
+.hide {
+    display: none;
+}
+.pull-right {
+    float: right;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.connect-button {
+    border-radius: 0 0 2px 2px;
+    width:100%;
+    min-height:31px;
+    border:0px;
+    border-top:1px solid #1d7baa;
+    cursor: pointer;
+    background: #2298D6;
+    color:#fff;
+    overflow: hidden;
+}
+.connect-button:hover {
+    background: #4986a7;
+}
+.father_icon {
+    float: left;
+    width: 37px;
+    border-top: 1px solid #1d7baa;
+    cursor: pointer;
+    background: #1d7baa;
+    text-align: center;
+    color:#fff;
+    padding-top:7px;
+    min-height: 27px;
+}
+.father_icon:hover {
+    background: #1D93D3;
+}
+.new_message_alert, .old_message_alert {
+    background: #5d5d5d;
+    color: #fff;
+    text-align: center;
+    height: 25px;
+    opacity: 0.8;
+    border-radius: 6px;
+    padding-top: 5px;
+}
+.old_message_alert {
+    margin-top: 6px;
+    cursor: pointer;
+    max-width: 424px;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+.loading {
+    text-align: center;
+    padding: 10px;
+}
+.remove_update {
+    cursor: pointer;
+}
+.sticker img {
+    max-width: 200px;
+}
+.location_iframe {
+    width: 100%;
+    height: 300px;
+}
+.forward_separate {
+    color: #000;
+    font-weight: normal;
+}
+.messages_loader {
+    text-align: center;
+    margin-top: 11px;
+    background: #fff;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}

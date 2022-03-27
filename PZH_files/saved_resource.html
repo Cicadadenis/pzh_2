@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://tgwidget.com/channel/v2.0/?id=6228aee0e3ea8070463babaa -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Channel @nnsjdeu78399</title>
+<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head>
+<body style="overflow-y: hidden;">
+<div class="tg">
+    <div class="tg-head">
+        <div class="tg-logo" data-id="-1001680477884">
+            <a rel="nofollow" href="https://tgwidget.com/" target="_blank" title="Перейти на сайт Telegram Widget">
+                <img src="./nnsjdeu78399.jpg" class="img-circle tg-logo-img">
+            </a>
+        </div>
+        <div class="tg-info">
+            <div class="tg-chat-title">
+                4ц3ц3уц3            </div>
+            <div class="tg-count-members">
+                <span class="cursor-pointer" title="Присоединиться к каналу" onclick="return open_new_tab(&#39;https://t.me/nnsjdeu78399&#39;)">
+                    @nnsjdeu78399</span>
+                                    2 участника                            </div>
+        </div>
+    </div>
+    <div class="tg-body" style="height: 453px;">
+    
+<script class="get_new_message">
+    $(function(){
+        setTimeout(function () {
+            tgw.get_new_messages()
+        }, 5000);
+    })
+</script></div>
+    <div class="btn-footer-line" title="https://t.me/nnsjdeu78399">
+        <div class="connect_icon">
+            <button onclick="return open_new_tab(&#39;https://t.me/nnsjdeu78399&#39;)" class="connect-button">Присоединиться к каналу</button>
+        </div>
+    </div>
+
+    <link href="./custom.css" rel="stylesheet" type="text/css">
+    <script src="./jquery-1.10.2.min.js.Без названия" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
+
+    <script>
+
+        function open_new_tab(url) {
+            window.open(url, '_blank');
+            return false;
+        }
+
+        tgw = {
+            peer_id: '6228aee0e3ea8070463babaa',
+            lock_get_history: false,
+            ajax_process: '<div class="messages_loader"><img src="images/loading.gif?v=1" /></div>',
+            count_max_request: 60,
+            count_exec_request: 0,
+
+            render: function () {
+                $('.tg-body').css({
+                    'height': $(window).height() - $('.tg-head').outerHeight() - $('.btn-footer-line').outerHeight()
+                })
+
+                // max-width for post
+                var w = $(window).width() - 46;
+                if(w < 432) {
+                    $('.post-body').css({
+                        'max-width': w
+                    })
+                }
+            },
+
+            // удалить сообщение
+            remove_update: function (update_id, date) {
+                $('.remove_btn_' + update_id).hide();
+                $('.remove_loading_' + update_id).show();
+                $.ajax({
+                    url: '/widget/action/index.php',
+                    type: 'POST',
+                    data: {
+                        action: 'remove_update',
+                        update_id: update_id,
+                        token: '',
+                        widget_id: '6228aee0e3ea8070463babaa'
+                    },
+                    cache: false,
+                    success: function (data) {
+                        $('.remove_loading_' + update_id).hide();
+                        if (parseInt(data) == 1) {
+                            $('.tgw_item[data-update_id="' + date + '"]').remove();
+                        } else {
+                            $('.remove_btn_' + update_id).show();
+                        }
+                    },
+                    fail: function () {
+                        $('.remove_btn_' + update_id).show();
+                        $('.remove_loading_' + update_id).hide();
+                    }
+                })
+            },
+
+            // подгрузить историю сообщений
+            get_history: function () {
+
+                if($('.tg-body').size()){
+
+                    tgw.lock_get_history = true;
+
+                    $('.tg-body').prepend(tgw.ajax_process);
+
+                    var update_id = $(".tgw_item:eq(0)").attr('data-update_id');
+
+                    $.ajax({
+                        url: '/channel/v2.0/index.php',
+                        type: 'POST',
+                        cache: false,
+                        data: {
+                            id: tgw.peer_id,
+                            update_id: update_id,
+                            type: 'history',
+                            hl: 'ru'
+                        },
+                        success: function (data) {
+                            $('.messages_loader').remove();
+                            $('.tg-body').prepend(data);
+                            tgw.lock_get_history = false;
+                        },
+                        error: function () {
+                            $('.messages_loader').remove();
+                            tgw.lock_get_history = false;
+                        }
+                    })
+                }
+            },
+
+            // загрузка последних сообщений
+            get_latest_messages: function () {
+
+                $('.tg-body').html(tgw.ajax_process);
+
+                $.ajax({
+                    url: '/channel/v2.0/index.php',
+                    type: 'POST',
+                    cache: false,
+                    data: {
+                        id: tgw.peer_id,
+                        type: 'latest',
+                        hl: 'ru'
+                    },
+                    success: function (data) {
+                        $('.tg-body').html(data);
+
+                        tgw.render();
+
+                        // scroll в низ
+                        tgw.scroll_to_last_message();
+                    },
+                    error: function () {
+                        $('.messages_loader').remove();
+                    }
+                })
+            },
+
+            // проверка наличия новых сообщений
+            get_new_messages: function () {
+
+                if(tgw.count_exec_request >= tgw.count_max_request)
+                    return false;
+
+                // последнее сообщение
+                var last_update_id = 0;
+                if ($('.tgw_item').size()) {
+                    last_update_id = $(".tgw_item:eq(" + ($('.tgw_item').size() - 1) + ")").attr('data-update_id');
+                }
+
+                // последняя временная отметка в сообщениях
+                var last_day = '';
+                if ($('.tgw_day_separate').size()) {
+                    last_day = $(".tgw_day_separate:eq(" + ($('.tgw_day_separate').size() - 1) + ")").attr('data-value');
+                }
+
+                tgw.count_exec_request++;
+
+                $.ajax({
+                    url: '/channel/v2.0/index.php',
+                    type: 'POST',
+                    cache: false,
+                    data: {
+                        id: tgw.peer_id,
+                        update_id: last_update_id,
+                        last_day: last_day,
+                        type: 'new',
+                        hl: 'ru'
+                    },
+                    success: function (data) {
+
+                        $('.tg-body').append(data);
+
+                        // удалим первый script
+                        if ($('.get_new_message').size() > 1)
+                            $('.get_new_message:eq(0)').remove();
+                    },
+                    error: function () {
+                        //$('.messages_loader').hide();
+                    }
+                })
+            },
+
+            // scroll к самому последнему сообщению
+            scroll_to_last_message: function () {
+
+                $('.tg-body').scrollTop($('.tg-body').prop('scrollHeight'));
+
+                // scroll вниз после загрузки всех картинок
+                $('img').one('load', function () {
+                    $('.tg-body').scrollTop($('.tg-body').prop('scrollHeight'));
+                })
+            }
+        }
+
+        $(function () {
+
+            tgw.render();
+
+            $(window).on('resize', function () {
+                tgw.render()
+            })
+
+            // получить последние сообщения
+            tgw.get_latest_messages();
+
+            // проверяем наличие новых сообщений
+            setTimeout(function () {
+                tgw.get_new_messages();
+            }, 5000);
+
+            // история сообщений
+            $('.tg-body').on('scroll', function () {
+                if(
+                    $(this).scrollTop() == 0
+                    && tgw.lock_get_history == false
+                    && $('.tg-body').size() > 0
+                ){
+                    tgw.get_history();
+                }
+            })
+        })
+    </script>
+
+
+    
+    
+    <script>console.log("tgw:group widget load: 0.0019509792327881 seconds.")</script><script>console.log("tgw:group widget chat_id: -1001680477884")</script>
+    
+
+
+</div></body></html>
